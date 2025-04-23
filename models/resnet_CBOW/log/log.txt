@@ -1,0 +1,60 @@
+Model Name: resnet_CBOW
+Hyperparameters:
+  Learning Rate: 0.0001
+  Optimizer: Adam
+  Batch Size: 32
+  Epochs: 10
+
+Training Log:
+==================================================
+Epoch 1/10:
+  Train Loss: 2.4067, Val Loss: 1.8266
+  Train Accuracy: 0.3611, Val Accuracy: 0.4878
+--------------------------------------------------
+Epoch 2/10:
+  Train Loss: 1.4420, Val Loss: 1.2464
+  Train Accuracy: 0.5980, Val Accuracy: 0.6600
+--------------------------------------------------
+Epoch 3/10:
+  Train Loss: 1.0309, Val Loss: 0.9586
+  Train Accuracy: 0.6987, Val Accuracy: 0.7032
+--------------------------------------------------
+Epoch 4/10:
+  Train Loss: 0.8434, Val Loss: 0.9060
+  Train Accuracy: 0.7203, Val Accuracy: 0.6917
+--------------------------------------------------
+Epoch 5/10:
+  Train Loss: 0.7583, Val Loss: 0.8315
+  Train Accuracy: 0.7299, Val Accuracy: 0.7075
+--------------------------------------------------
+Epoch 6/10:
+  Train Loss: 0.6894, Val Loss: 0.7761
+  Train Accuracy: 0.7461, Val Accuracy: 0.7226
+--------------------------------------------------
+Epoch 7/10:
+  Train Loss: 0.6412, Val Loss: 0.7294
+  Train Accuracy: 0.7642, Val Accuracy: 0.7332
+--------------------------------------------------
+Epoch 8/10:
+  Train Loss: 0.5820, Val Loss: 0.7512
+  Train Accuracy: 0.7847, Val Accuracy: 0.7193
+--------------------------------------------------
+Epoch 9/10:
+  Train Loss: 0.5389, Val Loss: 0.6628
+  Train Accuracy: 0.8005, Val Accuracy: 0.7506
+--------------------------------------------------
+Epoch 10/10:
+  Train Loss: 0.4921, Val Loss: 0.6865
+  Train Accuracy: 0.8163, Val Accuracy: 0.7477
+--------------------------------------------------
+
+Training Summary:
+==================================================
+Total Training Time: 0:28:37
+==================================================
+
+Test Evaluation:
+==================================================
+Test Loss: 0.7797
+Test Accuracy: 0.7332
+==================================================
