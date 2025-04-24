@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # .
 
 # HYPERPARAMETERS
 CONFIG_PATH='../../../config/config.ini'
-MODEL_NAME = "resnet_CBOW"
+MODEL_NAME = "resnet_LSTM"
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
 
@@ -80,7 +80,7 @@ def inference(image:str, question:str):
     print("Loading weights done.")
 
     # MODEL    
-    model = resnet_CBOW(vocab_size=vocab_size, num_classes=num_classes, embeddings=embeddings, word_embed=300)
+    model = resnet_LSTM(vocab_size=vocab_size, num_classes=num_classes, embeddings=embeddings, word_embed=300)
     model = model.to(device)
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
