@@ -1,0 +1,60 @@
+Model Name: resnet_TFIDF
+Hyperparameters:
+  Learning Rate: 0.0001
+  Optimizer: Adam
+  Batch Size: 32
+  Epochs: 10
+
+Training Log:
+==================================================
+Epoch 1/10:
+  Train Loss: 2.6930, Val Loss: 2.3018
+  Train Accuracy: 0.2554, Val Accuracy: 0.3893
+--------------------------------------------------
+Epoch 2/10:
+  Train Loss: 1.9310, Val Loss: 1.7134
+  Train Accuracy: 0.5003, Val Accuracy: 0.5197
+--------------------------------------------------
+Epoch 3/10:
+  Train Loss: 1.4703, Val Loss: 1.3429
+  Train Accuracy: 0.5665, Val Accuracy: 0.6072
+--------------------------------------------------
+Epoch 4/10:
+  Train Loss: 1.1866, Val Loss: 1.2007
+  Train Accuracy: 0.6718, Val Accuracy: 0.6739
+--------------------------------------------------
+Epoch 5/10:
+  Train Loss: 1.0002, Val Loss: 1.0323
+  Train Accuracy: 0.7183, Val Accuracy: 0.6990
+--------------------------------------------------
+Epoch 6/10:
+  Train Loss: 0.8869, Val Loss: 0.9700
+  Train Accuracy: 0.7309, Val Accuracy: 0.7083
+--------------------------------------------------
+Epoch 7/10:
+  Train Loss: 0.8229, Val Loss: 0.9312
+  Train Accuracy: 0.7350, Val Accuracy: 0.7017
+--------------------------------------------------
+Epoch 8/10:
+  Train Loss: 0.7754, Val Loss: 0.8639
+  Train Accuracy: 0.7406, Val Accuracy: 0.7123
+--------------------------------------------------
+Epoch 9/10:
+  Train Loss: 0.7193, Val Loss: 0.8183
+  Train Accuracy: 0.7508, Val Accuracy: 0.7266
+--------------------------------------------------
+Epoch 10/10:
+  Train Loss: 0.6828, Val Loss: 0.7908
+  Train Accuracy: 0.7622, Val Accuracy: 0.7239
+--------------------------------------------------
+
+Training Summary:
+==================================================
+Total Training Time: 0:27:50
+==================================================
+
+Test Evaluation:
+==================================================
+Test Loss: 0.8878
+Test Accuracy: 0.7045
+==================================================
