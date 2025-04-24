@@ -218,8 +218,8 @@ def train():
         torch.save(checkpoint, checkpoint_path)
         print(f"Checkpoint saved at epoch {epoch+1} with Val Loss: {val_loss:.4f}\n")
 
-        total_time = time.time() - start_time
-        total_time_str = str(timedelta(seconds=int(total_time)))
+    total_time = time.time() - start_time
+    total_time_str = str(timedelta(seconds=int(total_time)))
     
     # Save training time to log
     print(f"Total Training Time: {total_time_str}")

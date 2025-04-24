@@ -8,7 +8,6 @@ import torch.optim as optim
 from collections import defaultdict
 import numpy as np
 
-# Hàm hỗ trợ để tạo dữ liệu huấn luyện CBOW
 def build_vocab_and_context(corpus, window_size=2):
     vocab = set()
     for sentence in corpus:
@@ -19,7 +18,7 @@ def build_vocab_and_context(corpus, window_size=2):
     word_to_idx = {word: idx for idx, word in enumerate(vocab)}
     idx_to_word = {idx: word for idx, word in enumerate(vocab)}
     
-    # Tạo dữ liệu huấn luyện CBOW: (context, target)
+    # (context, target)
     data = []
     for sentence in corpus:
         tokens = sentence.lower().split()
@@ -29,13 +28,12 @@ def build_vocab_and_context(corpus, window_size=2):
             for j in range(max(0, i - window_size), min(len(tokens), i + window_size + 1)):
                 if j != i:
                     context.append(tokens[j])
-            # Đảm bảo context có độ dài cố định
+            # context with window size
             while len(context) < 2 * window_size:
                 context.append("<pad>")
             data.append((context, target))
     return vocab, word_to_idx, idx_to_word, data
 
-# Mô hình CBOW
 class CBOW(nn.Module):
     def __init__(self, vocab_size, embedding_dim):
         super(CBOW, self).__init__()
@@ -49,17 +47,15 @@ class CBOW(nn.Module):
         return out
 
 def train_cbow(corpus, embedding_dim=300, window_size=2, epochs=100):
-    # Tạo từ điển và dữ liệu huấn luyện
     vocab, word_to_idx, idx_to_word, data = build_vocab_and_context(corpus, window_size)
     vocab_size = len(vocab)
     
-    # Khởi tạo mô hình CBOW
     device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
     model = CBOW(vocab_size, embedding_dim).to(device)
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     criterion = nn.CrossEntropyLoss()
     
-    # Chuyển dữ liệu thành tensor
+    # tensor
     contexts = []
     targets = []
     for context, target in data:
@@ -71,7 +67,7 @@ def train_cbow(corpus, embedding_dim=300, window_size=2, epochs=100):
     contexts = torch.tensor(contexts, dtype=torch.long).to(device)
     targets = torch.tensor(targets, dtype=torch.long).to(device)
     
-    # Huấn luyện
+    # Training
     for epoch in range(epochs):
         model.zero_grad()
         output = model(contexts)
@@ -81,7 +77,6 @@ def train_cbow(corpus, embedding_dim=300, window_size=2, epochs=100):
         if (epoch + 1) % 10 == 0:
             print(f'Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}')
     
-    # Lấy word embedding
     embeddings = model.embeddings.weight.detach().cpu().numpy()
     return vocab, embeddings
 
@@ -89,10 +84,10 @@ def create_global_dictionaries(train_df, val_df, test_df, embedding_dim=300):
     all_questions = pd.concat([train_df['question'], val_df['question'], test_df['question']])
     all_questions = all_questions.str.lower()
     
-    # Huấn luyện CBOW
+    # train CBOW
     vocab, embeddings = train_cbow(all_questions, embedding_dim=embedding_dim)
     
-    # Tạo từ điển ánh xạ câu trả lời
+    # create answer mapping
     all_answers = pd.concat([train_df['answer'], val_df['answer'], test_df['answer']]).str.lower()
     unique_answers = all_answers.unique()
     global_answers_to_idx = {answer: idx for idx, answer in enumerate(unique_answers)}

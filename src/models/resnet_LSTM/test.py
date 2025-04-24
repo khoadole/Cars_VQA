@@ -44,7 +44,8 @@ def test():
     vocab_dir = os.path.join(project_root, checkpoint_base_path, MODEL_NAME, "vocab")
     vocab_path = os.path.join(vocab_dir, "qu_vocab.pth")
 
-    # Load model
+    # Load weights
+    print("Loading weights...")
     checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
     vocab_size = checkpoint['vocab_size']
     num_classes = checkpoint['num_classes']
@@ -52,13 +53,16 @@ def test():
     # Load embedding
     vocab_data = torch.load(vocab_path, map_location=device, weights_only=False)
     embeddings = vocab_data['embeddings']
+    print("Loading weights done.")
 
-    # Load Dataframe
+    # Load Dataset
+    print("Loading dataset...")
     dataframe_df = load_dataset(config['dataset']['dataset_hf'])
     train_df = pd.DataFrame(dataframe_df["train"])
     val_df = pd.DataFrame(dataframe_df["validation"])
     test_df = pd.DataFrame(dataframe_df["test"])
     dataLoader = data_loader(train_df, val_df, test_df, vocabs=vocab_data, batch_size=32, shuffle=False, num_workers=4)
+    print("Loading dataset done.")
 
     # MODEL
     model = resnet_LSTM(vocab_size=vocab_size, num_classes=num_classes, embeddings=embeddings, word_embed=300)
@@ -70,6 +74,7 @@ def test():
     criterion = nn.CrossEntropyLoss()
 
     # Testing
+    print("#"*10 + "TESTING" + "#"*10)
     test_loss = 0.0
     test_correct = 0
     test_total = 0
@@ -101,6 +106,7 @@ def test():
         log_file.write(f"Test Loss: {test_loss:.4f}\n")
         log_file.write(f"Test Accuracy: {test_accuracy:.4f}\n")
         log_file.write("=" * 50 + "\n")
+    print(f"Save test log to {log_path}")
 
 if __name__ == "__main__":
     test()
