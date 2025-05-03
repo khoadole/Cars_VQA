@@ -69,7 +69,7 @@ def train():
     # Save vocab
     qu_vocab = dataLoader["train"].dataset.qu_vocab
     torch.save({
-        'vocab': qu_vocab.vocab,  
+        'q_bow': dataLoader["train"].dataset.questions_bow,  
         'answer_to_idx': qu_vocab.answer_to_idx  
     }, vocab_path)
     print(f"Vocabulary saved to {vocab_path}")

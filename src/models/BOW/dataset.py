@@ -53,10 +53,10 @@ class Dataset_BOW(Dataset):
     
 def data_loader(train_df, val_df, test_df, vocabs=None, batch_size=8, shuffle=True, num_workers=4):
     # global_questions_bow, global_answers_to_idx = create_global_dictionaries(train_df, val_df, test_df)
-    if vocabs is not None:
+    if vocabs is None:
         local_questions_bow, local_answers_to_idx = create_local_dictionaries(train_df)
     else:
-        local_questions_bow = vocabs['vocab'] 
+        local_questions_bow = vocabs['q_bow'] 
         local_answers_to_idx = vocabs['answer_to_idx']
 
     vqa_dataset = {
@@ -98,7 +98,7 @@ class VocabInfo:
     
     def get_answer_to_idx(self):
         return self.answer_to_idx
-    
+
     def word_to_idx(self, word):
         try:
             return list(self.vocab).index(word)

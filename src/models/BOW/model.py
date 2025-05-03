@@ -183,3 +183,44 @@ class resnetBOW_outputlayer_cat(nn.Module):
         out = self.tanh(self.combine_fc1(combined))
         out = self.combine_fc2(out)
         return out
+	
+# EfficientNet + BOW
+class EfficientNet_BOW(nn.Module):
+    def __init__(self, embedding_size, num_classes):
+        super(EfficientNet_BOW, self).__init__()
+        efficientnet = torchvision.models.efficientnet_b0(weights="IMAGENET1K_V1")
+        self.features = efficientnet.features
+        
+        self.classifier = nn.Sequential(
+            nn.AdaptiveAvgPool2d(1),
+            nn.Flatten(),
+            nn.Dropout(0.2),
+            nn.Linear(1280, 512),
+            nn.ReLU(True),
+            nn.Linear(512, 32)
+        )
+        
+        # Question processing
+        self.ques_fc1 = nn.Linear(embedding_size, 64)
+        self.ques_fc2 = nn.Linear(64, 32)
+        self.tanh = nn.Tanh()
+        
+        # Combine
+        self.combine_fc1 = nn.Linear(64, 32)
+        self.combine_fc2 = nn.Linear(32, num_classes)
+    
+    def forward(self, img, question):
+        # Image process
+        x = self.features(img)
+        img_features = self.classifier(x)
+        
+        # Question process
+        question = question.float()
+        question = self.tanh(self.ques_fc1(question))
+        question = self.tanh(self.ques_fc2(question))
+        
+        # Combined
+        combined = torch.cat((img_features, question), 1)
+        out = self.tanh(self.combine_fc1(combined))
+        out = self.combine_fc2(out)
+        return out
