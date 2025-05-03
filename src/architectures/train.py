@@ -14,18 +14,18 @@ from dataset import data_loader
 from preprocess.make_vocab import load_config
 
 CONFIG_PATH='../../config/config.ini'
-EPOCHS = 1
+EPOCHS = 10
 BATCH_SIZE = 32
 LR = 1e-4
 NUMS_WORKER = 4
 
-def compare_architectures(models_dict, train_loader, val_loader, epochs=10, lr=LR, save_dir='./trained_models'):
+def compare_architectures(models_dict, train_loader, val_loader, epochs=10, lr=LR, save_dir='./vqa_models'):
     results = []
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     criterion = nn.CrossEntropyLoss()
     
     os.makedirs(save_dir, exist_ok=True)
-    
+    print(f"Saving results to {save_dir}")
     for model_name, model in models_dict.items():
         print(f"Evaluating {model_name}...")
         model.to(device)
@@ -170,7 +170,7 @@ def compare_architectures(models_dict, train_loader, val_loader, epochs=10, lr=L
             'best_accuracy': best_acc,
             'train_losses': train_losses,
             'val_accuracies': val_accs,
-            'model_path': final_path
+            # 'model_path': final_path
         })
 
     results_path = os.path.join(save_dir, 'results.json')
@@ -178,70 +178,6 @@ def compare_architectures(models_dict, train_loader, val_loader, epochs=10, lr=L
         json.dump(results, f, indent=4)
     print(f"Results saved to {results_path}")
     return results
-
-def visualize_comparison(results):
-    import matplotlib.pyplot as plt
-    import pandas as pd
-    
-    df = pd.DataFrame([{
-        'Model': r['model_name'],
-        'Params (M)': r['total_params'] / 1e6,
-        'Size (MB)': r['model_size_mb'],
-        'Training Time (s)': r['training_time'],
-        'Inference Time (ms)': r['average_inference_time'] * 1000,
-        'Accuracy (%)': r['best_accuracy']
-    } for r in results])
-    
-    print(df)
-    
-    # Plot accuracy
-    plt.figure(figsize=(12, 8))
-    for r in results:
-        plt.plot(range(1, len(r['val_accuracies'])+1), r['val_accuracies'], 
-                 label=f"{r['model_name']} (Best: {r['best_accuracy']:.2f}%)")
-    
-    plt.title('Validation Accuracy Comparison')
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy (%)')
-    plt.legend()
-    plt.grid(True)
-    plt.savefig('accuracy_comparison.png')
-    
-    # Plot size vs accuracy
-    plt.figure(figsize=(10, 6))
-    plt.scatter([r['model_size_mb'] for r in results], 
-                [r['best_accuracy'] for r in results],
-                s=100)
-    
-    for r in results:
-        plt.annotate(r['model_name'], 
-                    (r['model_size_mb'], r['best_accuracy']),
-                    xytext=(5, 5), textcoords='offset points')
-    
-    plt.title('Model Size vs. Accuracy')
-    plt.xlabel('Model Size (MB)')
-    plt.ylabel('Best Accuracy (%)')
-    plt.grid(True)
-    plt.savefig('size_vs_accuracy.png')
-    
-    # Plot inference time vs accuracy
-    plt.figure(figsize=(10, 6))
-    plt.scatter([r['average_inference_time'] * 1000 for r in results], 
-                [r['best_accuracy'] for r in results],
-                s=100)
-    
-    for r in results:
-        plt.annotate(r['model_name'], 
-                    (r['average_inference_time'] * 1000, r['best_accuracy']),
-                    xytext=(5, 5), textcoords='offset points')
-    
-    plt.title('Inference Time vs. Accuracy')
-    plt.xlabel('Inference Time per Sample (ms)')
-    plt.ylabel('Best Accuracy (%)')
-    plt.grid(True)
-    plt.savefig('time_vs_accuracy.png')
-    
-    return df
 
 if __name__ == "__main__":
     config = load_config(CONFIG_PATH)
@@ -267,7 +203,4 @@ if __name__ == "__main__":
         'EfficientNet_BOW': EfficientNet_BOW(embedding_size=embedding_size, num_classes=num_classes),
     }
 
-    # Compare architectures
-    results = compare_architectures(models_dict, dataLoader["train"], dataLoader["val"], epochs=EPOCHS, save_dir='./vqa_models')
-    # Visualize results
-    df = visualize_comparison(results)
+    compare_architectures(models_dict, dataLoader["train"], dataLoader["val"], epochs=EPOCHS, save_dir='./results')

@@ -1,0 +1,57 @@
+[
+    {
+        "model_name": "ResNet_BOW",
+        "total_params": 24652953,
+        "trainable_params": 24652953,
+        "model_size_mb": 94.04355239868164,
+        "training_time": 1745.798045873642,
+        "average_inference_time": 0.0041444594686106465,
+        "best_accuracy": 0.7041873963515755,
+        "train_losses": [],
+        "val_accuracies": []
+    },
+    {
+        "model_name": "VGG_BOW",
+        "total_params": 119619353,
+        "trainable_params": 119619353,
+        "model_size_mb": 456.31161880493164,
+        "training_time": 2716.9504342079163,
+        "average_inference_time": 0.005677413979968423,
+        "best_accuracy": 0.7854477611940298,
+        "train_losses": [],
+        "val_accuracies": []
+    },
+    {
+        "model_name": "DenseNet_BOW",
+        "total_params": 7521113,
+        "trainable_params": 7521113,
+        "model_size_mb": 28.69076919555664,
+        "training_time": 1795.8230543136597,
+        "average_inference_time": 0.004510028000494734,
+        "best_accuracy": 0.8428689883913765,
+        "train_losses": [],
+        "val_accuracies": []
+    },
+    {
+        "model_name": "MobileNet_BOW",
+        "total_params": 2922201,
+        "trainable_params": 2922201,
+        "model_size_mb": 11.14731216430664,
+        "training_time": 872.4415762424469,
+        "average_inference_time": 0.0036095476664516264,
+        "best_accuracy": 0.8053482587064676,
+        "train_losses": [],
+        "val_accuracies": []
+    },
+    {
+        "model_name": "EfficientNet_BOW",
+        "total_params": 4705877,
+        "trainable_params": 4705877,
+        "model_size_mb": 17.951496124267578,
+        "training_time": 1006.5367476940155,
+        "average_inference_time": 0.004019992416770897,
+        "best_accuracy": 0.8472222222222222,
+        "train_losses": [],
+        "val_accuracies": []
+    }
+]
