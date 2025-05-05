@@ -71,7 +71,9 @@ def train():
     torch.save({
         'vocab': qu_vocab.vocab,
         'embeddings': embeddings,
-        'answer_to_idx': qu_vocab.answer_to_idx
+        'answer_to_idx': qu_vocab.answer_to_idx,
+        'word_to_idx': qu_vocab.word_to_idx,
+        'idx_to_word': qu_vocab.idx_to_word
     }, vocab_path)
     print(f"Vocabulary saved to {vocab_path}")
 
