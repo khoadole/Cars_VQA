@@ -4,7 +4,8 @@
 
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]<br>
+<!-- ![Product Name Screen Shot][product-screenshot]<br> -->
+
 Cars_VQA is a Visual Question Answering (VQA) project focused on answering questions about cars in images. It provides a dataset of car images along with questions and answers, and includes models trained to perform VQA on this dataset. The project aims to advance research in VQA for specific domains, particularly automotive-related applications.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
