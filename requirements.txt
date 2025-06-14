@@ -1,29 +1,33 @@
-# Core ML libraries
-torch>=2.0.0
-torchvision>=0.15.0
-numpy>=1.24.0
-onnxruntime>=1.16.0
+# Web Framework
+Flask==3.1.0
+Flask-CORS==5.0.1
+Werkzeug==3.1.3
 
-# Image processing
-Pillow>=9.5.0
+# Core ML Libraries
+torch==2.7.0
+torchvision==0.21.0
+numpy==2.0.2
+onnxruntime==1.21.0
 
-# Web framework
-Flask>=2.3.0
-Flask-CORS>=4.0.0
-Werkzeug>=2.3.0
+# Image Processing
+Pillow
+opencv-python==4.11.0.86
 
-# HTTP requests
-requests>=2.31.0
+# Data Processing
+pandas
+datasets==3.5.0
 
-# Data processing
-pandas>=2.0.0
+# HTTP Requests
+requests==2.32.3
 
 # Configuration
-configparser
+configparser==7.2.0
 
-# Dataset loading (if needed)
-datasets>=2.14.0
+# Transformers (if needed for your model)
+transformers==4.51.3
+tokenizers==0.21.1
+huggingface-hub==0.30.2
 
-# Additional utilities
-torch-audio>=2.0.0
-torchaudio>=2.0.0
+# Utilities
+python-dotenv==1.1.0
+safetensors==0.5.3
