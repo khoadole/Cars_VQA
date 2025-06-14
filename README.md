@@ -6,7 +6,8 @@
 
 ![Product Name Screen Shot][product-screenshot]<br>
 
-Cars_VQA is a Visual Question Answering (VQA) project focused on answering questions about cars in images. It provides a dataset of car images along with questions and answers, and includes models trained to perform VQA on this dataset. The project aims to advance research in VQA for specific domains, particularly automotive-related applications.
+Cars_VQA is a Visual Question Answering (VQA) project focused on answering questions about cars in images. It provides a dataset of car images along with questions and answers, and includes models trained to perform VQA on this dataset. The project aims to advance research in VQA for specific domains, particularly automotive-related applications.<br>
+Dataset crawl from : https://www.cars.com/new-cars/ <br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -34,6 +35,8 @@ Cars_VQA is a Visual Question Answering (VQA) project focused on answering quest
 ### Built With
 
 - [![PyTorch][PyTorch]][PyTorch-url]
+- [![Flask][Flask]][Flask-url]
+- [![JavaScript][JavaScript]][JavaScript-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,3 +125,7 @@ To get a local copy up and running, follow these simple steps.
 [product-screenshot]: images/landingpage.png
 [PyTorch]: https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white
 [PyTorch-url]: https://pytorch.org/
+[Flask]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
+[Flask-url]: https://flask.palletsprojects.com/
+[JavaScript]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
