@@ -5,7 +5,7 @@ coremltools==8.2
 datasets==3.5.0
 Flask==3.1.0
 GitPython==3.1.44
-GitPython==3.1.44
+# GitPython==3.1.44 # <- Duplicate removed
 ipython==8.12.3
 matplotlib==3.10.1
 mss==10.0.0
@@ -24,7 +24,7 @@ Pillow==11.2.1
 psutil==7.0.0
 pycocotools==2.0.8
 PyYAML==6.0.2
-PyYAML==6.0.2
+# PyYAML==6.0.2 # <- Duplicate removed
 Requests==2.32.3
 scikit_learn==1.6.1
 scipy==1.15.2
@@ -34,9 +34,9 @@ tensorflow==2.19.0
 tensorflowjs==4.22.0
 # tensorrt==10.9.0.34
 # tflite_runtime==2.14.0
-tflite_support==0.4.4
-torch==2.6.0+cu126
-torchvision==0.21.0+cu126
+# tflite_support==0.4.4  # Commented out - compatibility issues
+torch==2.6.0  # CUDA removed for cloud deployment
+torchvision==0.21.0  # CUDA removed for cloud deployment
 tqdm==4.67.1
 tritonclient==2.56.0
 ultralytics==8.3.97
