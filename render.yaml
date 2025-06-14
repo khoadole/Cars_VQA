@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: cars-vqa
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
