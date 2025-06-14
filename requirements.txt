@@ -32,8 +32,8 @@ seaborn==0.13.2
 setuptools==75.8.0
 tensorflow==2.19.0
 tensorflowjs==4.22.0
-tensorrt==10.9.0.34
-tflite_runtime==2.14.0
+# tensorrt==10.9.0.34
+# tflite_runtime==2.14.0
 tflite_support==0.4.4
 torch==2.6.0+cu126
 torchvision==0.21.0+cu126
