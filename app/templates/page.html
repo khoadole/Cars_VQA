@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.google.com/specimen/Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Car VQA</title>
+  </head>
+
+  <body class="bg-gray-150 flex flex-col min-h-screen font-opensans">
+    <!-- Header -->
+    <header class="h-[100px] w-full">
+      <div
+        class="w-full h-full flex justify-center items-center text-4xl font-bold"
+      >
+        Car VQA
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex flex-grow flex-col px-[25px] sm:px-[50x] md:px-[100px] lg:px-[200px]">
+      <div
+        class="flex w-full flex-grow flex-col rounded-[20px] bg-gradient-to-b from-[#9CECFB] via-[#65C7F7] to-[#0052D4] shadow-2xl"
+      >
+        <!-- Image upload section -->
+        <div
+          class="flex flex-row flex-col lg:flex-row flex-grow-[7] w-full justify-center items-center p-4 sm:p-6 md:p-8 rounded-t-[20px]"
+        >
+          <div class="flex flex-col items-center gap-4 w-full max-w-md">
+            <input
+              type="file"
+              accept="image/*"
+              class="bg-white border border-gray-300 p-3 w-full rounded-[10px] text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer file:transition file:duration-150 file:ease-in-out file:active:scale-95 hover:file:scale-105"
+              id="imageInput"
+            />
+            <img
+              id="previewImage"
+              class="max-h-48 sm:max-h-56 md:max-h-64 lg:max-h-72 shadow-md"
+            />
+          </div>
+        </div>
+        <!-- Dashed border -->
+        <div
+          class="flex flex-row flex-grow-[1] w-full justify-center items-center p-4 gap-4 border-y-2 border-dashed"
+        >
+          <!-- Input question -->
+          <div class="flex w-full h-full justify-center rouned-lg">
+            <input
+              type="text"
+              class="border border-gray-500 rounded-lg p-3 w-full mx-4 my-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Enter your question here"
+              id="questionInput"
+            />
+          </div>
+          <div class="border-l-2 border-dashed border-white-400 h-12"></div>
+          <!-- Button -->
+          <div class="flex w-full flex-grow justify-center rounded-lg p-2">
+            <button
+              class="bg-blue-500 text-white rounded-lg p-3 w-[150px] font-bold focus:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm sm:text-base trainsition-all duration-200 hover:bg-blue-600 hover:scale-105 active:scale-95 border-2"
+              onClick="sendData()"
+            >
+              Run
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex flex-row flex-grow-[2] w-full justify-center items-center p-4 sm:p-6 rounded-b-[20px]"
+        >
+          <div
+            class="w-full h-full bg-white rounded-lg shadow-md p-4 overflow-y-auto"
+          >
+            <p id="resultContent" class="text-gray-600">Result will appear here!</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-4 bottom-0 px-[25px] sm:px-[50x] md:px-[100px] lg:px-[200px]">
+      <div class="border-t-2 border-dashed border-[#0052D4]">
+    </footer>
+  </body>
+  <style>
+    .font-opensans {
+      font-family: "Open Sans", sans-serif;
+    }
+  </style>
+  <script src="../static/js/script.js"></script>
+</html>
