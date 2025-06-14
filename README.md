@@ -4,7 +4,7 @@
 
 ## About The Project
 
-<!-- ![Product Name Screen Shot][product-screenshot]<br> -->
+![Product Name Screen Shot][product-screenshot]<br>
 
 Cars_VQA is a Visual Question Answering (VQA) project focused on answering questions about cars in images. It provides a dataset of car images along with questions and answers, and includes models trained to perform VQA on this dataset. The project aims to advance research in VQA for specific domains, particularly automotive-related applications.
 
@@ -119,6 +119,6 @@ To get a local copy up and running, follow these simple steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/landingpage.png
 [PyTorch]: https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white
 [PyTorch-url]: https://pytorch.org/
