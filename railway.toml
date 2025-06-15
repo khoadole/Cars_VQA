@@ -3,9 +3,6 @@ builder = "dockerfile"
 dockerfilePath = "app/Dockerfile"
 
 [deploy]
-# Railway tự động set PORT environment variable
-# Không cần specify port cụ thể
-startCommand = "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --log-level info"
 healthcheckPath = "/health"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
