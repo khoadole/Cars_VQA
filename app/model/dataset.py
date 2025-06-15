@@ -80,51 +80,6 @@ class Dataset_CBOW(Dataset):
             answer_idx = 0
         return image, question, answer_idx
 
-# def data_loader(train_df, val_df, test_df, embedding=None, answers_to_idx=None, vocabs=None, batch_size=8, shuffle=True, num_workers=4):
-#     if embedding is None or answers_to_idx is None or vocabs is None:
-#         vocab, embeddings, global_answers_to_idx = create_global_dictionaries(train_df, val_df, test_df)
-#     else :
-#         global_answers_to_idx = answers_to_idx
-#         vocab = vocabs
-#         embeddings = embedding
-
-#     # Transform
-#     transform = transforms.Compose([
-#         transforms.Resize((224, 224)),
-#         transforms.ToTensor(),
-#         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.224, 0.239, 0.258]),
-#     ])
-    
-#     vqa_dataset = {
-#         'train': Dataset_CBOW(
-#             dataframe=train_df,
-#             transform=transform,
-#             vocab=vocab,
-#             embeddings=embeddings,
-#             answers_to_idx=global_answers_to_idx),
-#         'val': Dataset_CBOW(
-#             dataframe=val_df,
-#             transform=transform,
-#             vocab=vocab,
-#             embeddings=embeddings,
-#             answers_to_idx=global_answers_to_idx),
-#         'test': Dataset_CBOW(
-#             dataframe=test_df,
-#             transform=transform,
-#             vocab=vocab,
-#             embeddings=embeddings,
-#             answers_to_idx=global_answers_to_idx)
-#     }
-    
-#     data_loader = {
-#         key: DataLoader(vqa_dataset[key], 
-#                         batch_size=batch_size, 
-#                         shuffle=shuffle, 
-#                         num_workers=num_workers) 
-#         for key in ['train', 'val', 'test']
-#     }
-#     return data_loader
-
 def data_loader(train_df, val_df, test_df, vocabs=None, batch_size=8, shuffle=True, num_workers=4):
     if vocabs is None:
         vocab, embeddings, global_answers_to_idx = create_global_dictionaries(train_df, val_df, test_df)

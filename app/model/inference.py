@@ -12,7 +12,6 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # ../
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-# project_root = os.path.abspath("/app")
 sys.path.append(project_root)
 sys.path.append(os.path.join(project_root, 'app'))  # Add app directory
 sys.path.append(os.path.join(project_root, 'app', 'model'))  # Add model directory
@@ -206,13 +205,7 @@ def inference(image_path: str, question: str, return_confidence: bool = False):
         predicted_answer or (predicted_answer, confidence)
     """
     config = load_config(CONFIG_PATH)
-    # project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-    # project_root = os.path.abspath("/app")
-    # project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-    # project_root = os.path.join(project_root, '..', 'models')
-
     current_dir = os.path.dirname(os.path.abspath(__file__))
-
     onnx_path = os.path.join(current_dir, '..')
 
     project_root = os.path.abspath(onnx_path)
@@ -256,13 +249,9 @@ def batch_inference(image_paths, questions):
         raise ValueError("Number of images and questions must match")
     
     config = load_config(CONFIG_PATH)
-    # project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-    # project_root = os.path.abspath("/app")
     project_root = os.path.dirname(os.path.abspath(__file__))
-    # project_root = os.path.join(project_root, '..', 'models')
 
     # Config paths
-    # checkpoint_base_path = config['log']['checkpoint_base_path']
     checkpoint_base_path = "models"
     checkpoint_dir = os.path.join(project_root, checkpoint_base_path, MODEL_NAME, "checkpoint")
     onnx_path = os.path.join(checkpoint_dir, "model.onnx")
@@ -284,45 +273,3 @@ def batch_inference(image_paths, questions):
             results.append("ERROR")
     
     return results
-
-if __name__ == "__main__":
-    # Single inference example
-    # image_path = "images/images.jpeg"
-    # image_path = "https://di-uploads-pod10.dealerinspire.com/acuranorthscottsdale/uploads/2018/09/2019-mdx-png.png"
-    image_path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb43ag1ubbT5rEEDBjrDsUFqffBb8jTdFWRQ&s"
-    question = "Đây là chiếc xe type what?"
-    
-    try:
-        # Simple prediction
-        predicted_answer = inference(image_path, question)
-        print(f"Predicted Answer: {predicted_answer}")
-        
-        # Prediction with confidence
-        predicted_answer, confidence = inference(image_path, question, return_confidence=True)
-        print(f"Predicted Answer: {predicted_answer}")
-        print(f"Confidence: {confidence:.4f}")
-        
-    except Exception as e:
-        print(f"Error: {e}")
-    
-    # Batch inference example
-    print("\n" + "="*50)
-    print("Batch Inference Example:")
-    
-    image_paths = [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb43ag1ubbT5rEEDBjrDsUFqffBb8jTdFWRQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb43ag1ubbT5rEEDBjrDsUFqffBb8jTdFWRQ&s"
-    ]
-    questions = [
-        "Đây là chiếc xe type what?",
-        "What color is this car?"
-    ]
-    
-    try:
-        batch_results = batch_inference(image_paths, questions)
-        for i, (img, q, answer) in enumerate(zip(image_paths, questions, batch_results)):
-            print(f"Sample {i+1}:")
-            print(f"  Question: {q}")
-            print(f"  Answer: {answer}")
-    except Exception as e:
-        print(f"Batch inference error: {e}")

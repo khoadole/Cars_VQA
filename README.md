@@ -2,13 +2,19 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## 📘 About The Project
 
 ![Product Name Screen Shot][product-screenshot]<br>
 
 Cars_VQA is a Visual Question Answering (VQA) project focused on answering questions about cars in images. It provides a dataset of car images along with questions and answers, and includes models trained to perform VQA on this dataset. The project aims to advance research in VQA for specific domains, particularly automotive-related applications.<br>
 
-## Dataset
+## 🌐 Live Demo
+
+The project has been successfully deployed online.
+🔗 You can try it here:  
+👉 [https://carsvqa-production.up.railway.app](https://carsvqa-production.up.railway.app)
+
+## 🗂️ Dataset
 
 - Crawl from : https://www.cars.com/new-cars/ <br>
 - Upload to Hugging Face : https://huggingface.co/datasets/khoadole/cars_8k_balance_dataset_full_augmented_v2
@@ -37,7 +43,7 @@ Cars_VQA is a Visual Question Answering (VQA) project focused on answering quest
   </ol>
 </details>
 
-### Framework & Libraries
+### 🧰 Framework & Libraries
 
 - [![PyTorch][PyTorch]][PyTorch-url]
 - [![NumPy][NumPy]][NumPy-url]
@@ -64,18 +70,18 @@ Cars_VQA is a Visual Question Answering (VQA) project focused on answering quest
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- GETTING STARTED -->
 
-## Getting Started
+## 🚀 Getting Started
 
 To get a local copy up and running, follow these simple steps.
 
-### Prerequisites
+### 📦 Prerequisites
 
 - Python 3.7 or higher
   ```sh
   pip install --upgrade pip
   ```
 
-### Installation
+### 🛠️ Installation
 
 1. Clone the repo
    ```sh
@@ -88,9 +94,9 @@ To get a local copy up and running, follow these simple steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Usage
+## ▶️ Usage
 
-### Crawling and Preprocessing Data
+### 🕸️ Crawling and Preprocessing Data
 
 1. **Crawl Data**: Use the Jupyter Notebook to crawl data for the project.
 
@@ -115,7 +121,7 @@ To get a local copy up and running, follow these simple steps.
    ```
    Run `preprocess_dataset.ipynb` to generate the final dataset ready for training.
 
-### Training and Testing Models
+### 🧠 Training and Testing Models
 
 1. Change to the model directory:
 
