@@ -12,12 +12,14 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # ../
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+# project_root = os.path.abspath("/app")
 sys.path.append(project_root)
 sys.path.append(os.path.join(project_root, 'app'))  # Add app directory
 sys.path.append(os.path.join(project_root, 'app', 'model'))  # Add model directory
 
 # HYPERPARAMETERS
 CONFIG_PATH='../config/config.ini'
+CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../config/config.ini')
 MODEL_NAME = "EfficientNet_LSTM"
 
 def preprocess_image(image_path):
@@ -204,10 +206,12 @@ def inference(image_path: str, question: str, return_confidence: bool = False):
         predicted_answer or (predicted_answer, confidence)
     """
     config = load_config(CONFIG_PATH)
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+    # project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+    project_root = os.path.abspath("/app")
 
     # Config paths
-    checkpoint_base_path = config['log']['checkpoint_base_path']
+    # checkpoint_base_path = config['log']['checkpoint_base_path']
+    checkpoint_base_path = "models"
     checkpoint_dir = os.path.join(project_root, checkpoint_base_path, MODEL_NAME, "checkpoint")
     onnx_path = os.path.join(checkpoint_dir, "model.onnx")
     
@@ -242,10 +246,12 @@ def batch_inference(image_paths, questions):
         raise ValueError("Number of images and questions must match")
     
     config = load_config(CONFIG_PATH)
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+    # project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+    project_root = os.path.abspath("/app")
 
     # Config paths
-    checkpoint_base_path = config['log']['checkpoint_base_path']
+    # checkpoint_base_path = config['log']['checkpoint_base_path']
+    checkpoint_base_path = "models"
     checkpoint_dir = os.path.join(project_root, checkpoint_base_path, MODEL_NAME, "checkpoint")
     onnx_path = os.path.join(checkpoint_dir, "model.onnx")
     
