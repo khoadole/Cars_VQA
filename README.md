@@ -54,6 +54,7 @@ The project has been successfully deployed online.
 ### Deployment & Optimization
 
 - [![ONNX][ONNX]][ONNX-url]
+- [![Docker][Docker]][Docker-url]
 
 ### Data & Visualization
 
@@ -175,3 +176,5 @@ To get a local copy up and running, follow these simple steps.
 [Seaborn-url]: https://seaborn.pydata.org/
 [Ultralytics]: https://img.shields.io/badge/Ultralytics-00FFFF?style=for-the-badge&logo=yolo&logoColor=black
 [Ultralytics-url]: https://ultralytics.com/
+[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
