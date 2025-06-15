@@ -11,6 +11,10 @@ CORS(app)
 def index():
     return render_template('page.html')
 
+@app.route('/health')
+def health():
+    return {'status': 'ok'}, 200
+
 @app.route('/api/send', methods=['POST'])
 def handle_upload():
     image = request.files.get('image')
@@ -37,5 +41,9 @@ def handle_upload():
 #     print("Received data:", data)
 #     return jsonify({"status":"OK", "received": data})
     
+# if __name__ == '__main__':
+#     app.run(debug=True, host='0.0.0.0', port=5000)
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
