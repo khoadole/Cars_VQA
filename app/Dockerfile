@@ -26,7 +26,8 @@ RUN pip install --no-cache-dir \
     datasets
 
 # Port mặc định Flask
-EXPOSE 5000
+# EXPOSE 5000
+EXPOSE $PORT
 
 # Lệnh chạy app
 CMD ["python", "app.py"]
