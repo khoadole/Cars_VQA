@@ -3,6 +3,7 @@ builder = "dockerfile"
 dockerfilePath = "app/Dockerfile"
 
 [deploy]
+workingDirectory = "/app"
 healthcheckPath = "/health"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
