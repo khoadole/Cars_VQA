@@ -213,10 +213,8 @@ def inference(image_path: str, question: str, return_confidence: bool = False):
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Xây dựng đường dẫn tới file mô hình (tương đối với thư mục model)
     onnx_path = os.path.join(current_dir, '..')
 
-    # Chuyển thành đường dẫn tuyệt đối và kiểm tra
     project_root = os.path.abspath(onnx_path)
     if not os.path.exists(onnx_path):
         raise FileNotFoundError(f"ONNX model not found at: {onnx_path}")

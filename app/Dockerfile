@@ -1,19 +1,14 @@
-# Dùng image nhẹ, tối ưu cho CPU
 FROM python:3.10-slim
 
-# Cài các thư viện hệ thống cần thiết để chạy PyTorch + Pillow
 RUN apt-get update && apt-get install -y \
     build-essential \
     libglib2.0-0 libsm6 libxext6 libxrender-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Tạo thư mục ứng dụng
 WORKDIR /app
 
-# Copy toàn bộ code vào container
-COPY . /app
-
-# Cài đặt thư viện Python
+# Copy requirements và install dependencies trước
+COPY requirements.txt* ./
 RUN pip install --no-cache-dir \
     Flask==3.1.0 \
     Flask-CORS==5.0.1 \
@@ -26,9 +21,15 @@ RUN pip install --no-cache-dir \
     datasets \
     gunicorn
 
-# Port mặc định Flask
-# EXPOSE 5000
+# Copy code (exclude gunicorn config)
+COPY . /app
+RUN rm -f gunicorn.conf.py
+
+# Tạo thư mục uploads
+RUN mkdir -p uploads
+
+ENV PORT=8080
 EXPOSE $PORT
 
-# CMD ["python", "app.py"]
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT"]
+# Chỉ định cấu hình trực tiếp trong CMD
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --log-level info"]
