@@ -23,11 +23,12 @@ RUN pip install --no-cache-dir \
     Pillow \
     "numpy<2" \
     requests \
-    datasets
+    datasets \
+    gunicorn
 
 # Port mặc định Flask
 # EXPOSE 5000
 EXPOSE $PORT
 
-# Lệnh chạy app
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT"]
