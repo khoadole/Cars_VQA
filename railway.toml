@@ -1,6 +1,6 @@
 [build]
 builder = "dockerfile"
-dockerfilePath = "app/Dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 workingDirectory = "/app"
