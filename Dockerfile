@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy requirements từ thư mục hiện tại (app/)
-COPY requirements.txt* ./
+# Copy requirements từ thư mục app/
+COPY app/requirements.txt* ./
 RUN pip install --no-cache-dir \
     Flask==3.1.0 \
     Flask-CORS==5.0.1 \
@@ -21,8 +21,8 @@ RUN pip install --no-cache-dir \
     datasets \
     gunicorn
 
-# Copy tất cả file từ thư mục app/ (thư mục hiện tại khi build)
-COPY . /app/
+# Copy toàn bộ thư mục app/
+COPY app/ /app/
 RUN rm -f gunicorn.conf.py
 
 # Tạo thư mục uploads
